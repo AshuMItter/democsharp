@@ -16,20 +16,10 @@ namespace DemoOne.Concepts
             }
 
         }
-
-
-
-
-
-
-
         public sealed class D
         {
             // Class members here.
         }
-
-
-
         abstract class BaseClass
         {
             public void MethodInBaseClass()

@@ -7,13 +7,13 @@ namespace DemoOne.Concepts
     class Interfaces
     {
     }
-    //defination
+    //definition
     interface ICalc
     {
         void Add(int num1, int num2);
         void Subtract(int num2, int num1);
     }
-    //defination
+    //definition
     interface ICalcB
     {
         void Divide(int num2, int num1);

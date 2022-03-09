@@ -4,9 +4,7 @@ using System.Text;
 
 namespace DemoOne.Concepts
 {
-    class VirtualKeyword
-    {
-    }
+    
     class AB
     {
         public virtual void ParentClass()
@@ -18,9 +16,19 @@ namespace DemoOne.Concepts
     {
         public override void ParentClass()
         {
+            base.ParentClass();
             Console.WriteLine("Hello from ABC");
         }
 
+    }
+    class ABCD : ABC
+    {
+        public override void ParentClass()
+        {
+            base.ParentClass();
+            Console.WriteLine("Hello from ABCD");
+
+        }
     }
 }
 

@@ -6,6 +6,20 @@ namespace DemoOne.Concepts
 {
     class Properties
     {
+        int _age;
+        public int Age
+        {
+
+            get
+            {
+                return _age;
+            }
+            set
+            {
+
+                _age = value;
+            }
+        }
     }
     class Student
     {
