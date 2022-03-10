@@ -32,9 +32,40 @@ namespace DemoOne.Demos
             }
            
 
+
+
+
+
+
            
            
         }
+
+        public void GenerateErrorDemo()
+        {
+            try
+            {
+                throw new DllNotFoundException();
+            }
+            catch (StackOverflowException e)
+            {
+                Console.WriteLine(e.Message +" from StackOverFlow");
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message+ "from Divide by Zero");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message+ "from Exceptiop");
+            }
+            finally
+            {
+                Console.WriteLine("Finally Block is executing");
+            }
+          
+            
+       }
 
         //stack overflow 
         public void Generate()

@@ -6,5 +6,12 @@ namespace DemoOne.Demos
 {
     class ConstantVariable
     {
+        const int age = 67;
+        public ConstantVariable()
+        {
+           
+        }
+       
+       
     }
 }
