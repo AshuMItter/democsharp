@@ -1,123 +1,92 @@
 ﻿using System;
-using System.Collections;
+using EFOscilationsDemo.Repository;
 using System.Linq;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-namespace LInqToObjects
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+
+namespace EFOscilationsDemo
 {
-    [Serializable]
-    class DemoDataOne
-    {
-        public int Age { get; set; }
-        public string Name { get; set; }
-    }
     class Program
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            //Console.WriteLine("Hello All from Oscilations!");
+            //Person person = new Person() { Age = 125, LocationOfthePerson = "Russia", NameOfthePerson = "Vladimier Putin" };
+            //Console.WriteLine(OscilationsCRUDOperations.CreateData(person));
+            //Person row = new Person();
+            //row.LocationOfthePerson = "India";
+            //row.NameOfthePerson = "Rakesh";
+            //row.Age = 23;
+            //OscilationsCRUDOperations.UpdateData(row);
 
 
-       object abc =  Deserialization.DeSerialization();
-            //data source
-            List<DemoDataOne> daTa =(List<DemoDataOne>) Deserialization.DeSerialization();
 
-            //query
-            var res = from data in daTa
-                      where data.Age == 22
-                      select data;
-
-            //execution
+            // Console.WriteLine(OscilationsCRUDOperations.DeleteDate(new Person() { NameOfthePerson= "Rakesh" }));
+            
+            var res = from person in OscilationsCRUDOperations.FetchData()
+                     
+                      select person;
 
             foreach (var item in res)
             {
-                Console.WriteLine(item.Name);
+                Console.WriteLine($"{item.NameOfthePerson,5}");
+                Console.WriteLine($"{item.LocationOfthePerson,15}");
+                Console.WriteLine($"{item.Age,25}");
+                
             }
-
-
-                       
-
-
-
-            //var res = from alpha in DAL.FetchData()
-            //          orderby alpha descending
-            //          select alpha;
-
-            //foreach (var item in res)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-            //SetOperations.Operations();
-            //ElementOperations.FindElement();
-            // Sorting.PerformSorting();
-            //Joins.PerformZip();
-            // ConcatinationOperation obj = new ConcatinationOperation();
-            // obj.ConatinatePlease();
-            //List<DemoDataOne> obj = new List<DemoDataOne>();
-            //obj.Add(new DemoDataOne() { Age = 22, Name = "Joe" });
-            //obj.Add(new DemoDataOne() { Age = 22, Name = "Rahul" });
-            //obj.Add(new DemoDataOne() { Age = 23, Name = "Narendra" });
-            //obj.Add(new DemoDataOne() { Age = 22, Name = "Kamla" });
-            //obj.Add(new DemoDataOne() { Age = 22, Name = "Ashumeet" });
-            //obj.Add(new DemoDataOne() { Age = 24, Name = "Yogi" });
-            //obj.Add(new DemoDataOne() { Age = 22, Name = "Kalpesh" });
-            //obj.Add(new DemoDataOne() { Age = 26, Name = "Kejriwal" });
-            //obj.Add(new DemoDataOne() { Age = 22, Name = "Didi" });
-
-            //var resset = obj.Where(x => x.Age == 22);
-
-            //Filtering obj = new Filtering();
-            //obj.DoFilter();
-            //var names = from name in obj
-            //            where name.Name == "Didi"
-            //            select name;
-
-
-            //foreach (var item in names)
-            //{
-            //    Console.WriteLine(item.Name);
-            //}
-
-            //string[] days = new string[] { "Mon", "Tue", "Wed", "Thu", "Fri" };
-
-            //int[] numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-            ////ListOfStudentData.ListOfStudents
-
-            // List<DemoDataOne> lIts=(List<DemoDataOne>) Deserialization.DeSerialization();
-
-
-
-
-            //var res = from a in numbers
-            //          where a % 3 == 0
-            //          select a;
-
-
-            //foreach (var item in res)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            // Sorting.PerformSorting();
-            //  Aggregate.AggregateLinq();
-            //   QuantifierOperations.QuantiFyOpt();
-            //  GroupingOperation.GroupElements();
-            // ElementOperations.FindElement();
-            // AnonymousMethods.AnonymousMethod();
-
-            //var res = from alpha in DAL.FetchData()
-            //          select alpha;
-
-            //foreach (var item in res)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-            //SetOperations.Operations();
-            // DemoCollection.CollectionDemo();
+           
         }
     }
+
+
+
+
+    static class OscilationsCRUDOperations
+    {
+        public static int CreateData(Person data)
+        {
+            var ctx = new OscilationsContext();
+            ctx.People.Add(data);
+
+            return ctx.SaveChanges();
+        }
+        public static int UpdateData(Person data)
+        {
+            var ctx = new OscilationsContext();
+            var row = ctx.People.First(x => x.RollNo == 2);
+
+            row.LocationOfthePerson = data.LocationOfthePerson;
+            row.NameOfthePerson = data.NameOfthePerson;
+            row.Age = data.Age;
+
+           // ctx.People.Add(row);
+           return ctx.SaveChanges();
+
+        }
+
+        public static int DeleteDate(Person data)
+        {
+            var ctx = new OscilationsContext();
+
+            var res = ctx.People.First(x=>x.NameOfthePerson== data.NameOfthePerson);
+
+            ctx.People.Remove(res);
+
+            return ctx.SaveChanges();
+
+
+        }
+
+        public static DbSet<Person> FetchData()
+        {
+            var ctx = new OscilationsContext();
+            return ctx.People;
+        }
+
+
+    }
+
 }
-   
