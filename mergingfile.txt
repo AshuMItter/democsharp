@@ -1,0 +1,1 @@
+tsc --outFile megedFilesname.js first.ts demo.ts
