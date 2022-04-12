@@ -1,14 +1,83 @@
- 
+
+
+
+// function FirstFunction(num?:number){
+//  console.log(num)
+// }
+
+// FirstFunction();
+
+// var unionType:string|number|string[]|boolean ;
+
+
+// unionType = "Hello";
+// //console.log(unionType);
+// unionType =45;
+// //console.log(unionType);
+// unionType= ["Hello","world"]
+// //console.log(unionType);
+// unionType = false;
+
+// console.log(unionType);
+
+
+
+
+
+
+
+
+// var alphas:string[];
+
+// alphas = ["1","2","3","4"] 
+
+// var ages:number[] = [2,9,34,19,75,37,82,34,4,6,8,10,11,12,14,16,18]
+
+// var nums:number[] = [];
+
+
+// var multiDimensionalArray:number[][] = [[23,23,56],[23,67,45]]
+
+
+// arrays
+//  var multi:number[][] = [[1,2,3],[23,24,25]]  
+//  console.log(multi[0][0]) 
+//  console.log(multi[0][1]) 
+//  console.log(multi[0][2]) 
+//  console.log(multi[1][0]) 
+//  console.log(multi[1][1]) 
+//  console.log(multi[1][2])
+
+
+// for(var i=0; i < ages.length;i++){
+//    if(ages[i] % 2 ==0){
+//      console.log(ages[i]+" is even");
+//    }
+//    else{
+//      console.log(ages[i]+" is odd");
+//    }
+// }
+
+// for(var i =0; i < 10; i++){
+// nums[i] = i;
+// }
+
+// for(var i=0; i < nums.length;i++){
+//  console.log(nums[i]);
+// }
+
+
+
 //  function DetailsOne(id:number = 45,name:string){
   
 //  }
 
- function calculate_discount(price:number=34,rate:number = 0.50) { 
-     var discount = price * rate; 
-     console.log("Discount Amount: ",discount); 
-  } 
+//  function calculate_discount(price:number=34,rate:number = 0.50) { 
+//      var discount = price * rate; 
+//      console.log("Discount Amount: ",discount); 
+//   } 
 
-calculate_discount();
+//calculate_discount();
 //  var n:number = 10;
 
 //  do { 
@@ -169,54 +238,71 @@ calculate_discount();
 // // optional parameters
 // // no value = undefined
 
-// function DetailsOne(id?:number){
 
-// }
+
+//  function DetailsOne(id?:number){
+//   console.log(id);
+//  }
+//  DetailsOne();
 
 // // rest parameters - ...num:string[]
 // // data type must be set to an array.
+// rest param shoud be last one
 
-// function RestDemo(...num:string[]){
-//  console.log(num);
-//  }
-//  RestDemo("abc","abc","abc","abc");
+//  function RestDemo(id:number,name:string,...num:string[]){
+//   console.log(id);
+//   }
+//   RestDemo(23,"abcName","abc","abc","abc");
 
 // // default parameters
-// function calculate_discount(price:number,rate:number = 0.50) { 
-//     var discount = price * rate; 
-//     console.log("Discount Amount: ",discount); 
-//  } 
+//  function calculate_discount(price:number,rate:number = 0.50) { 
+//      var discount = price * rate; 
+//      console.log("Discount Amount: ",discount); 
+//   } 
+//   calculate_discount(23)
+
 // // anonymous function
-// var res = function(a:number,b:number) { 
-//     return a*b;  
-//  }; 
-//  console.log(res(12,2));
+
+//  var res = function(a:number,b:number) { 
+//      return a*b;  
+//   }; 
+//   console.log(res(12,2));
 
 //  // self calling functions
-//  (function () { 
-//     var x = "Hello!!";   
-//     console.log(x)     
-//  })()  
+  // (function (x:number) { 
+       
+  //    console.log(x)     
+  // })(23)  
 
 //  // lambda expression
-//  var foo = (x:number)=>10 + x 
-// console.log(foo(100)) 
+//   var foo = (x:number,y:string)=>10 + x 
+//  console.log(foo(100,"Name")) 
 
 // // lambda statment
 // var foo:number = (x:number)=> {    
-//     x = 10 + x 
-//     console.log(x)  
-//  } 
-//  foo(100)
+//      x = 10 + x 
+   
+//      console.log(x)  
+//   } 
+//   foo(100)
 
 //  //The data type of the parameter
 
-// function disp(string):void; 
-// function disp(number):void;
+  //  function Disp(x:string){
+
+  //  }
+
+  //  function Disp(y:number){
+
+  //  }
+
+  // disp("Hello");
+  // disp(34);
+
 // //The number of parameters
 
-// function disp(n1:number):void; 
-// function disp(x:number,y:number):void;
+//  function disp(n1:number):void; 
+//  function disp(x:number,y:number):void;
 
 // //The sequence of parameters
 
@@ -226,10 +312,10 @@ calculate_discount();
 //   var abc = 56;
   
 // // arrays
-// var alphas:string[]; 
-// alphas = ["1","2","3","4"] 
-// console.log(alphas[0]); 
-// console.log(alphas[1]);
+//  var alphas:string[]; 
+//  alphas = ["1","2","3","4"] 
+//  console.log(alphas[0]); 
+//  console.log(alphas[1]);
 
 // // arrays
 // var nums:number[] = [1,2,3,3] 
@@ -254,15 +340,26 @@ calculate_discount();
 // console.log(multi[1][1]) 
 // console.log(multi[1][2])
 
-// interfaces
-// interface IPerson { 
-//     firstName:string, 
-//     lastName:string, 
-//     sayHi: ()=>string 
-//     hello:() => number
-//     names:string[]
-//  }
 
+interface IDays{
+  days:string[],
+  name:string,
+  age:number,
+  myFunc:()=> number
+
+}
+ 
+
+// interfaces
+interface IPerson { 
+     firstName:string, 
+     lastName:string, 
+     sayHi: ()=>string
+     hello:() => number
+     names:string[]
+  }
+
+ 
 //  var customer:IPerson = { 
 //    firstName:"Ameet",
 //    lastName:"Singh", 
@@ -274,6 +371,81 @@ calculate_discount();
 // console.log(customer.firstName) 
 // console.log(customer.lastName) 
 // console.log(customer.sayHi()) 
+
+
+
+  
+  
+
+  class HumanBeing{
+
+     age:number;
+    name:string;
+    constructor(age:number){
+    this.age = age;
+    }
+  
+   
+   displayName():void{
+   console.log(this.name);
+   }
+
+  }
+
+  var hm:HumanBeing= new HumanBeing(34);
+
+  
+
+  class Demographic implements IPerson,IDays{
+    days: string[];
+    name: string;
+    age: number;
+    myFunc():number {
+      return 34;
+    }
+
+    firstName: string;
+    lastName: string;
+
+    sayHi =function(){
+      return "hi";
+    }
+    hello = function() {
+     
+          return 34;
+    }
+    names: string[];
+
+  }
+  
+  enum Direction {
+    Up=1,
+    Down,
+    Left,
+    Right,
+  }
+
+  // console.log(Direction.Up)
+  // console.log(Direction.Down)
+  // console.log(Direction.Left)
+  // console.log(Direction.Right)
+
+   var employee: [number, string,number,string,number,number] = [1, "Steve",34.67,'c',12,34];
+   console.log(employee[2]);
+  
+
+
+  var demo = new Demographic();
+  
+  
+   //console.log(demo.sayHi());
+  
+  
+  
+  
+
+
+
 
 // class Car { 
 //     //field 
@@ -360,12 +532,27 @@ calculate_discount();
 //        console.log("Area of the circle:  "+this.Area) 
 //     } 
 //  }
-// namespace Allow{
-//     // use export to get it used outsude the namespace
-//   export class One{
 
-//     }
-//   export  class Two{
+namespace Allow{
+    // use export to get it used outside the namespace
+  export class One{
+       nam:string = "Hi";
+       
+    }
+ export  class Two{
 
-//     }
+    }
+}
+
+function add(a:string, b:string):string
+
+
+
+function add(a:number, b:number): number;
+
+function add(a: any, b:any): any {
+    return a + b;
+}
+
+add("Hello","hi")
 // }
